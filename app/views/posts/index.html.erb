@@ -1,0 +1,28 @@
+<% if @posts.count > 0 %>
+    <% count = 0 %>
+    <% @posts.each do |post| %>
+        <% count += 1 %>
+        <% color = if count % 3 == 0 %>
+            <% 'three' %>
+        <% elsif count.even? %>
+            <% 'two' %>
+        <% else %>
+            <% 'one' %>
+        <% end %>
+        <div id="<%= dom_id(post) %>" class="container container-<%= color %>">
+          <header>
+            <%= post.title %> by <%= post.user.name %>
+          </header>
+          <main><%= post.body %></main>
+          <footer><%= post.tags %>
+            <% if post.user == @current_user %>
+                <%= button_to 'Show', post, class: 'show' %>
+                <%= button_to 'Edit', edit_post_path(post), class: 'edit' %>
+                <%= button_to 'Destroy', post, class: 'delete', method: :delete, data: {confirm: 'Are you sure?'} %>
+            <% end %>
+          </footer>
+        </div>
+    <% end %>
+<% else %>
+    There are no posts yet.
+<% end %>
