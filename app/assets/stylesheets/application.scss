@@ -8,3 +8,8 @@
 .alert {
   @include alert();
 }
+
+html {
+  background: url(http://blog.spoongraphics.co.uk/wp-content/uploads/2013/retro-neon/19.jpg) no-repeat center center fixed;
+  background-size: cover;
+}
