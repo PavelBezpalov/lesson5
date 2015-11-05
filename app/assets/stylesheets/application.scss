@@ -1,6 +1,21 @@
 @import "kickstart_rails";
 @import "posts";
 
+// fonts
+@import url(https://fonts.googleapis.com/css?family=Orbitron:500);
+
+.logo {
+  @include column(4, 4);
+  text-align: center;
+  h1 {
+    font-family: 'Orbitron', sans-serif;
+  }
+}
+
+.posts {
+  @include wrapper($fluid: true);
+}
+
 .navbar {
   @include navbar();
 }
@@ -9,7 +24,21 @@
   @include alert();
 }
 
-html {
-  background: url(http://blog.spoongraphics.co.uk/wp-content/uploads/2013/retro-neon/19.jpg) no-repeat center center fixed;
-  background-size: cover;
+.centralize {
+  text-align: center;
+}
+
+form {
+  @include form();
+}
+
+.username, .email, .password, .password_confirmation{
+  @include form_group();
+  input {
+    margin: 0 auto;
+  }
+}
+
+.submit input {
+  @include button($primary-color);
 }

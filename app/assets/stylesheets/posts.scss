@@ -1,21 +1,58 @@
-.container.container-one {
-  @include container($color: #d80afc);
+.container {
+  @include container();
+  padding: 0 25px;
+  header {
+    background: none;
+    justify-content: flex-end;
+  }
 }
 
-.container.container-two {
-  @include container($color: #ff3e83);
+h3.post-title {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  line-height: 1.25;
 }
 
-.container.container-three {
-  @include container($color: #ff5fe8);
+.post-header {
+  margin-bottom: 15px;
+  line-height: 1.0;
+}
+
+.post-header .post-labels {
+  margin: 10px 0 0 0;
+  display: block;
+}
+
+.post-credits {
+  font: italic normal 11px 'Source Sans Pro', sans-serif;
+  margin: 10px 0 25px 0;
+  display: inherit;
+  line-height: 1.25;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 input[type=submit].show {
-  @include button(map-get($colors, green));
+  @include button(map-get($colors, green), $size: 0.85);
+  margin: 5px 5px 0;
 }
 input[type=submit].edit {
-  @include button(map-get($colors, yellow));
+  @include button(map-get($colors, yellow), $size: 0.85);
+  margin: 5px 5px 0;
 }
 input[type=submit].delete {
-  @include button(map-get($colors, red));
+  @include button(map-get($colors, red), $size: 0.85);
+  margin: 5px 5px 0;
+}
+
+.field{
+  @include form_group();
+
+  textarea {
+    width: 400px;
+    height: 200px;
+  }
 }

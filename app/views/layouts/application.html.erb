@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Homework 4</title>
+  <title>RoR coding notes</title>
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
@@ -27,14 +27,19 @@
   </nav>
 </div>
 
-<% flash.each do |type, message| %>
-    <div class="alert">
-      <%= message %>
-    </div>
-<% end %>
+<div class="logo">
+  <h1>RoR coding notes</h1>
+</div>
 
-<%= yield %>
+<div class="posts">
+  <% flash.each do |type, message| %>
+      <div class="alert">
+        <%= message %>
+      </div>
+  <% end %>
 
+  <%= yield %>
+</div>
 
 </body>
 </html>
