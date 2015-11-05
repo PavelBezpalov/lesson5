@@ -11,7 +11,7 @@ describe 'Logging In' do
     fill_in 'Password', with: '12345678'
     click_button 'Log In'
 
-    expect(page).to have_content('Posts')
+    expect(page).to have_content('New Post')
     expect(page).to have_content('Your successfully logging in!')
   end
 

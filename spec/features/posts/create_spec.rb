@@ -16,6 +16,11 @@ describe 'Creating posts' do
     click_button 'Create Post'
   end
 
+  before do
+    user = create(:user)
+    login(user)
+  end
+
   it 'redirects to the post index page on success' do
     create_post_item
 

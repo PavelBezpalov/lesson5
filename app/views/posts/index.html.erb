@@ -1,7 +1,7 @@
 <% if @posts.count > 0 %>
     <% @posts.each do |post| %>
         <div id="<%= dom_id(post) %>" class="container">
-          <% if post.user == @current_user %>
+          <% if post.user.id == session[:user_id] %>
               <header>
                 <% button_to 'Show', post, method: :get, class: 'show' %>
                 <%= button_to 'Edit', edit_post_path(post), method: :get, class: 'edit' %>

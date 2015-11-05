@@ -1,18 +1,20 @@
 require 'rails_helper'
 
 describe 'Deleting posts' do
-  let!(:post) { Post.create(title: 'First post',
-                            body: 'Body of the first post',
-                            tags: 'some, tags, here') }
+  before do
+    user = create(:user)
+    login(user)
+    @post = create(:post, user_id: user.id)
+  end
 
   it 'is successful when clicking the destroy link' do
-    visit '/posts'
+    visit '/'
 
-    within "#post_#{post.id}" do
-      click_link 'Destroy'
+    within "#post_#{@post.id}" do
+      click_button 'Destroy'
     end
 
-    expect(page).to_not have_content(post.title)
+    expect(page).to_not have_content(@post.title)
     expect(Post.count).to eq(0)
   end
 end
