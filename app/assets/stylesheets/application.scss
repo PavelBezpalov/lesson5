@@ -42,3 +42,14 @@ form {
 .submit input {
   @include button($primary-color);
 }
+
+form.search {
+  margin: 0;
+  input {
+    display: inline;
+  }
+  input[type=submit] {
+    @include button($primary-color, $size: 0.95);
+    margin: 0 0 2.5px 3px;
+  }
+}

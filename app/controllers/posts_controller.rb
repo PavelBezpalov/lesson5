@@ -6,7 +6,11 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.all
+    @posts = if params[:search].blank?
+               Post.all
+             else
+               Post.where('body LIKE ? OR title LIKE ?', "%#{params[:search]}%", "%#{params[:search]}%")
+             end
   end
 
   # GET /posts/1
