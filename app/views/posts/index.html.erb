@@ -1,13 +1,6 @@
 <% if @posts.count > 0 %>
     <% @posts.each do |post| %>
         <div id="<%= dom_id(post) %>" class="container">
-          <% if post.user.id == session[:user_id] %>
-              <header>
-                <% button_to 'Show', post, method: :get, class: 'show' %>
-                <%= button_to 'Edit', edit_post_path(post), method: :get, class: 'edit' %>
-                <%= button_to 'Destroy', post, class: 'delete', method: :delete, data: {confirm: 'Are you sure?'} %>
-              </header>
-          <% end %>
           <main><h3 class="post-title"><%= post.title %></h3>
 
             <div class="post-header">
@@ -21,8 +14,16 @@ Author: <%= post.user.name %>
   on <%= post.created_at.strftime("%H:%M, %d %B %Y") %>
 </span>
             </div>
-            <p><%= post.body %></main>
-          </p>
+            <p><%= post.body %></p>
+          </main>
+
+          <% if post.user.id == session[:user_id] %>
+              <footer>
+                <% button_to 'Show', post, method: :get, class: 'show' %>
+                <%= button_to 'Edit', edit_post_path(post), method: :get, class: 'edit' %>
+                <%= button_to 'Destroy', post, class: 'delete', method: :delete, data: {confirm: 'Are you sure?'} %>
+              </footer>
+          <% end %>
         </div>
     <% end %>
 <% else %>
