@@ -9,13 +9,14 @@ class SessionsController < ApplicationController
       flash[:success] = 'Your successfully logging in!'
       redirect_to posts_path
     else
-      flash[:error] ='There was a problem logging in. Please check your email and password.'
+      flash[:error] = 'There was a problem logging in.' \
+                      ' Please check your email and password.'
       render action: 'new'
     end
   end
 
   def destroy
     session[:user_id] = nil
-    redirect_to root_url, notice: "Logged out!"
+    redirect_to root_url, notice: 'Logged out!'
   end
 end

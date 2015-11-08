@@ -32,13 +32,6 @@ RSpec.describe User, type: :model do
     end
 
     context '#downcase_email' do
-      it 'makes the email attribute lower case' do
-        user = User.new(name: 'Pavel', email: 'TRATATATA@AGRESSOR.COM')
-        expect { user.downcase_email }.to change { user.email }.
-            from('TRATATATA@AGRESSOR.COM').
-            to('tratatata@agressor.com')
-      end
-
       it 'downcases an email before saving' do
         user = User.new(valid_attributes)
         user.email = 'TRATATATA@AGRESSOR.COM'

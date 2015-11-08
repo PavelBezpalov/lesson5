@@ -7,8 +7,9 @@ FactoryGirl.define do
   end
 
   factory :post do
-    sequence(:title) { |n| "Post#{n*rand(50)*rand(100..200)}" }
+    sequence(:title) { |n| "Post#{ n * rand(50) * rand(100..200)}" }
     body 'Body of the first post'
     tags 'some, tags, here'
+    user_id { create(:user).id }
   end
 end

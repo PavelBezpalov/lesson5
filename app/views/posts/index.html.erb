@@ -4,15 +4,15 @@
           <main><h3 class="post-title"><%= post.title %></h3>
 
             <div class="post-header">
-<span class="post-labels">
-<% post.tags.split(%r{,+\s+|,+|\s+}).each do |tag| %>
-  <%= link_to tag, "/##{tag}" %>
-  <% end %>
-</span>
-<span class="post-credits">
-Author: <%= post.user.name %>
-  on <%= post.created_at.strftime("%H:%M, %d %B %Y") %>
-</span>
+              <span class="post-labels">
+                <% post.tags.split(%r{,+\s+|,+|\s+}).each do |tag| %>
+                 <%= link_to tag, "/##{tag}" %>
+                <% end %>
+              </span>
+              <span class="post-credits">
+                Author: <%= post.user.name %>
+                on <%= post.created_at.strftime("%H:%M, %d %B %Y") %>
+              </span>
             </div>
             <p><%= post.body %></p>
           </main>

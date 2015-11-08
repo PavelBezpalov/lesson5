@@ -15,34 +15,34 @@
     margin-left: 5px;
     margin-right: 5px;
   }
-}
 
-h3.post-title {
-  margin: 0;
-  padding: 0;
-  text-decoration: none;
-  text-transform: uppercase;
-  letter-spacing: 3px;
-  line-height: 1.25;
-}
+  h3.post-title {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    line-height: 1.25;
+  }
 
-.post-header {
-  margin-bottom: 15px;
-  line-height: 1.0;
-}
+  .post-header {
+    margin-bottom: 15px;
+    line-height: 1.0;
+  }
 
-.post-header .post-labels {
-  margin: 10px 0 0 0;
-  display: block;
-}
+  .post-header .post-labels {
+    margin: 10px 0 0 0;
+    display: block;
+  }
 
-.post-credits {
-  font: italic normal 11px 'Source Sans Pro', sans-serif;
-  margin: 10px 0 25px 0;
-  display: inherit;
-  line-height: 1.25;
-  text-transform: uppercase;
-  letter-spacing: 1px;
+  .post-credits {
+    font: italic normal 11px 'Source Sans Pro', sans-serif;
+    margin: 10px 0 25px 0;
+    display: inherit;
+    line-height: 1.25;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
 }
 
 .field {
