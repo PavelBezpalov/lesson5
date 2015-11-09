@@ -44,12 +44,3 @@
     letter-spacing: 1px;
   }
 }
-
-.field {
-  @include form_group();
-
-  textarea {
-    width: 400px;
-    height: 200px;
-  }
-}

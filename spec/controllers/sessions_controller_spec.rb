@@ -56,11 +56,6 @@ RSpec.describe SessionsController, type: :controller do
         post :create, email: email, password: password
         expect(response).to render_template('new')
       end
-
-      it 'sets the flash error message' do
-        post :create, email: email, password: password
-        expect(flash[:error]).to eq('There was a problem logging in. Please check your email and password.')
-      end
     end
 
     context 'without user credentials' do

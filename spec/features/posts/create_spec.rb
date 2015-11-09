@@ -30,27 +30,27 @@ describe 'Creating posts' do
   it 'displays an error when the post has no title' do
     create_post_item title: ''
 
-    expect(page).to have_content('error')
+    expect(page).to have_content('is too short')
   end
 
   it 'displays an error when the post has no body' do
     create_post_item body: ''
 
-    expect(page).to have_content('error')
+    expect(page).to have_content("can't be blank")
   end
 
   it 'displays an error when the post has a title with length less than 5
 characters' do
     create_post_item title: 'A' * 4
 
-    expect(page).to have_content('error')
+    expect(page).to have_content('is too short')
   end
 
   it 'displays an error when the post has a title with length more than 100
 characters' do
     create_post_item title: 'A' * 101
 
-    expect(page).to have_content('error')
+    expect(page).to have_content('is too long')
   end
 
   it 'displays an error when the post has the same title as existing post' do
@@ -60,6 +60,6 @@ characters' do
 
     create_post_item
 
-    expect(page).to have_content('error')
+    expect(page).to have_content('has already been taken')
   end
 end

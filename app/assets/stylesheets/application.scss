@@ -30,11 +30,18 @@
 form {
   @include form();
 
-  .username, .email, .password, .password_confirmation {
+  .group {
     @include form_group();
-    input {
-      margin: 0 auto;
-    }
+  }
+
+  textarea {
+    width: 400px;
+    height: 200px;
+  }
+
+  .center input {
+    margin-right: auto;
+    margin-left: auto;
   }
 
   input[type=submit] {

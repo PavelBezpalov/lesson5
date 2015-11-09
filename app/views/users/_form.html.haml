@@ -1,23 +1,22 @@
 = form_for(@user) do |f|
-  - if @user.errors.any?
-    #error_explanation
-      %h2
-        = pluralize(@user.errors.count, "error")
-        prohibited this
-        user from being saved:
-      %ul
-        - @user.errors.full_messages.each do |message|
-          %li= message
-  .username
-    = f.label :name
-    = f.text_field :name
-  .email
-    = f.label :email
-    = f.text_field :email
-  .password
-    = f.label :password
-    = f.password_field :password
-  .password_confirmation
-    = f.label :password_confirmation, 'Password Confirmation'
-    = f.password_field :password_confirmation
+  %div{ class: "#{user_field_class(:name)}" }
+    .center
+      = f.label :name
+      = f.text_field :name
+      %p= user_error_message(:name)
+  %div{ class: "#{user_field_class(:email)}" }
+    .center
+      = f.label :email
+      = f.text_field :email
+      %p= user_error_message(:email)
+  %div{ class: "#{user_field_class(:password)}" }
+    .center
+      = f.label :password
+      = f.password_field :password
+      %p= user_error_message(:password)
+  %div{ class: "#{user_field_class(:password_confirmation)}" }
+    .center
+      = f.label :password_confirmation, 'Password Confirmation'
+      = f.password_field :password_confirmation
+      %p= user_error_message(:password_confirmation)
   = f.submit 'Sign Up'

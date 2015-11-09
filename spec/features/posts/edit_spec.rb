@@ -34,21 +34,21 @@ describe 'Editing posts' do
 
   it 'displays an error with no title' do
     update_post title: ''
-    expect(page).to have_content('error')
+    expect(page).to have_content('is too short')
   end
 
   it 'displays an error with too short a title' do
     update_post title: 'A' * 4
-    expect(page).to have_content('error')
+    expect(page).to have_content('is too short')
   end
 
   it 'displays an error with too long a title' do
     update_post title: 'A' * 101
-    expect(page).to have_content('error')
+    expect(page).to have_content('is too long')
   end
 
   it 'displays an error with no body' do
     update_post body: ''
-    expect(page).to have_content('error')
+    expect(page).to have_content("can't be blank")
   end
 end
