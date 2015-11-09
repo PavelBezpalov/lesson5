@@ -21,6 +21,8 @@ gem 'kickstart_rails', '~> 3'
 # Add autoprefixer
 gem 'autoprefixer-rails'
 
+# Haml
+gem 'haml'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
