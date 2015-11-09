@@ -13,4 +13,7 @@ class User < ActiveRecord::Base
   def downcase_email
     self.email = email.downcase
   end
+
+  class NotAuthorized < StandardError
+  end
 end

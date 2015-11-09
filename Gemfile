@@ -67,6 +67,7 @@ end
 group :test do
   # http://www.rubydoc.info/gems/capybara/2.5.0#Setup
   gem 'capybara'
+  gem 'selenium-webdriver'
   gem 'shoulda-matchers', '~> 3.0'
 end
 

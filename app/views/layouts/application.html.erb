@@ -12,15 +12,15 @@
   <nav>
     <ul>
       <li><%= link_to 'Home', root_path %></li>
-      <li><%= link_to 'New Post', new_post_path if @current_user %></li>
+      <li><%= link_to 'New Post', new_post_path if current_user %></li>
       <li><%= form_tag root_path, method: :get, class: 'search' do %>
             <%= search_field_tag :search, params[:search], placeholder: 'Search', value: params[:search] %>
             <%= submit_tag 'Search', name: nil %>
         <% end %></li>
     </ul>
     <ul>
-      <% if @current_user %>
-          <li><%= @current_user.name %></li>
+      <% if current_user %>
+          <li><%= current_user.name %></li>
           <li><%= link_to "Log Out", log_out_path %></li>
       <% else %>
           <li><%= link_to "Sign Up", new_user_path %></li>
@@ -45,7 +45,7 @@
 </div>
 
 <% if set_promo_banner? %>
-    <div id="promo"></div>
+    <%= render 'shared/promo' %>
 <% end %>
 </body>
 </html>

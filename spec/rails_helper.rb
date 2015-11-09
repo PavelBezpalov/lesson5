@@ -67,6 +67,7 @@ RSpec.configure do |config|
   # spec/support/factory_girl.rb
   config.include FactoryGirl::Syntax::Methods
 end
+
 Shoulda::Matchers.configure do |config|
   config.integrate do |with|
     # Choose a test framework:
