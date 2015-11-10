@@ -8,7 +8,7 @@
       %span.post-credits
         Author: #{@post.user.name}
         on #{@post.created_at.strftime("%H:%M, %d %B %Y")}
-    %p= @post.body
+    %div= markdown(@post.body)
   %footer
     = button_to 'Back', root_path, method: :get
     - if @post.user.id == session[:user_id]

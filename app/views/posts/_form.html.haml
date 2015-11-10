@@ -5,7 +5,7 @@
     %p= post_error_message(:title)
   %div{ class: "#{post_field_class(:body)}" }
     = f.label :body
-    = f.text_area :body
+    = f.text_area :body, id: '#mde'
     %p= post_error_message(:body)
   %div{ class: "#{post_field_class(:tags)}" }
     = f.label :tags
@@ -13,3 +13,4 @@
     %p= post_error_message(:tags)
   .submit
     = f.submit
+  = render 'shared/mde'

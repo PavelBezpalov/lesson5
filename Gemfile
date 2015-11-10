@@ -18,6 +18,9 @@ gem 'sass', '~> 3.4'
 # Add the kickstart_rails gem
 gem 'kickstart_rails', '~> 3'
 
+# Markdown parser
+gem 'redcarpet'
+
 # Add autoprefixer
 gem 'autoprefixer-rails'
 

@@ -10,7 +10,7 @@
           %span.post-credits
             Author: #{post.user.name}
             on #{post.created_at.strftime("%H:%M, %d %B %Y")}
-        %p= post.body
+        %div= markdown(post.body)
       - if post.user.id == session[:user_id]
         %footer
           - button_to 'Show', post, method: :get, class: 'show'

@@ -1,4 +1,5 @@
 @import "kickstart_rails";
+@import "simplemde.min.css";
 @import "posts";
 // fonts
 @import url(https://fonts.googleapis.com/css?family=Orbitron:500);
@@ -172,4 +173,16 @@ form {
   label {
     color: #5A6DD0;
   }
+}
+
+.editor-toolbar {
+  background-color: #fff;
+}
+
+.CodeMirror {
+  background-color: #262626;
+}
+
+.CodeMirror-code {
+  color: #C70D0C;
 }
