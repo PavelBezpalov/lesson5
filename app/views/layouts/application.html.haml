@@ -25,10 +25,10 @@
             %li= link_to "Log In", log_in_path
     .logo
       %h1 RoR coding notes
-    .posts
-      - flash.each do |type, message|
-        .alert
-          = message
+    .content
       = yield
+    - flash.each do |type, message|
+      = render partial: 'shared/status', locals: { message: message,
+                                                   type: type }
     - if set_promo_banner?
       = render 'shared/promo'

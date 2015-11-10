@@ -13,7 +13,7 @@ class SessionsController < ApplicationController
         render action: 'new'
       else
         session[:user_id] = user.id
-        flash[:success] = 'Your successfully logging in!'
+        flash[:success] = 'You successfully logging in'
         redirect_to posts_path
       end
     end
@@ -21,6 +21,7 @@ class SessionsController < ApplicationController
 
   def destroy
     session[:user_id] = nil
-    redirect_to root_url, notice: 'Logged out!'
+    flash[:success] = 'Logged out'
+    redirect_to root_url
   end
 end

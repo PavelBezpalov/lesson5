@@ -8,5 +8,6 @@ module LoginHelpers
     fill_in 'Email Address', with: user.email
     fill_in 'Password', with: user.password
     click_button 'Log In'
+    expect(page).to have_content('New Post')
   end
 end

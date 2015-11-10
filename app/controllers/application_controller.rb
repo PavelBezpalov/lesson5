@@ -30,6 +30,6 @@ class ApplicationController < ActionController::Base
 
   def require_user
       redirect_to new_session_path,
-                  error: 'You must be logged in to access that action.'
+                  alert: 'You must be logged in to access that action'
   end
 end
