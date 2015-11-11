@@ -1,22 +1,22 @@
 = form_for(@user) do |f|
-  %div{ class: "#{user_field_class(:name)}" }
+  %div{ class: "#{field_class(@user, :name)}" }
     .center
       = f.label :name
       = f.text_field :name
-      %p= user_error_message(:name)
-  %div{ class: "#{user_field_class(:email)}" }
+      %p= error_message(@user, :name)
+  %div{ class: "#{field_class(@user, :email)}" }
     .center
       = f.label :email
       = f.text_field :email
-      %p= user_error_message(:email)
-  %div{ class: "#{user_field_class(:password)}" }
+      %p= error_message(@user, :email)
+  %div{ class: "#{field_class(@user, :password)}" }
     .center
       = f.label :password
       = f.password_field :password
-      %p= user_error_message(:password)
-  %div{ class: "#{user_field_class(:password_confirmation)}" }
+      %p= error_message(@user, :password)
+  %div{ class: "#{field_class(@user, :password_confirmation)}" }
     .center
       = f.label :password_confirmation, 'Password Confirmation'
       = f.password_field :password_confirmation
-      %p= user_error_message(:password_confirmation)
+      %p= error_message(@user, :password_confirmation)
   = f.submit 'Sign Up'

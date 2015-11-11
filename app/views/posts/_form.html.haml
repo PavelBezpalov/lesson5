@@ -1,16 +1,16 @@
 = form_for(@post) do |f|
-  %div{ class: "#{post_field_class(:title)}" }
+  %div{ class: "#{field_class(@post, :title)}" }
     = f.label :title
     = f.text_field :title
-    %p= post_error_message(:title)
-  %div{ class: "#{post_field_class(:body)}" }
+    %p= error_message(@post, :title)
+  %div{ class: "#{field_class(@post, :body)}" }
     = f.label :body
     = f.text_area :body, id: '#mde'
-    %p= post_error_message(:body)
-  %div{ class: "#{post_field_class(:tags)}" }
+    %p= error_message(@post, :body)
+  %div{ class: "#{field_class(@post, :tags)}" }
     = f.label :tags
     = f.text_field :tags
-    %p= post_error_message(:tags)
+    %p= error_message(@post, :tags)
   .submit
     = f.submit
   = render 'shared/mde'

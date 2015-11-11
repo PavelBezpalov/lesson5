@@ -1,16 +1,16 @@
 .centralize
   %h1 Log In
   = form_tag sessions_path do
-    %div{ class: "#{session_field_class(:email)}" }
+    %div{ class: "#{field_class(@session, :email)}" }
       .center
         = label_tag :email, 'Email Address'
         = text_field_tag :email, params[:email]
-        %p= session_error_message(:email)
-    %div{ class: "#{session_field_class(:password)}" }
+        %p= error_message(@session, :email)
+    %div{ class: "#{field_class(@session, :password)}" }
       .center
         = label_tag :password
-        = password_field_tag :password, params[:password]
-        %p= session_error_message(:password)
+        = password_field_tag :password
+        %p= error_message(@session, :password)
     .submit
       .center
         = submit_tag 'Log In'

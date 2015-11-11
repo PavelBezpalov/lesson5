@@ -61,6 +61,10 @@ form.search {
   }
 }
 
+table {
+  @include table();
+}
+
 // Perturbator theme
 .navbar {
   background-color: #1A1A1A;
