@@ -9,6 +9,7 @@ class SessionsController < ApplicationController
       flash[:success] = 'You successfully logging in'
       redirect_to posts_path
     else
+      flash.now[:alert] = 'Something went wrong. Check errors and try again'
       render action: 'new'
     end
   end

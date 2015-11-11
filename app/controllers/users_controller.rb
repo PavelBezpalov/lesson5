@@ -20,6 +20,7 @@ class UsersController < ApplicationController
                       status: :created,
                       location: @user }
       else
+        flash.now[:alert] = 'Something went wrong. Check errors and try again'
         format.html { render :new }
         format.json { render json: @user.errors,
                       status: :unprocessable_entity }

@@ -26,6 +26,7 @@ class PostsController < ApplicationController
                       notice: 'Post was successfully created.' }
         format.json { render :show, status: :created, location: @post }
       else
+        flash.now[:alert] = 'Something went wrong. Check errors and try again'
         format.html { render :new }
         format.json { render json: @post.errors,
                       status: :unprocessable_entity }
@@ -40,6 +41,7 @@ class PostsController < ApplicationController
                       notice: 'Post was successfully updated.' }
         format.json { render :show, status: :ok, location: @post }
       else
+        flash.now[:alert] = 'Something went wrong. Check errors and try again'
         format.html { render :edit }
         format.json { render json: @post.errors, status: :unprocessable_entity }
       end
