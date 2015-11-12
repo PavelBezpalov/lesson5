@@ -3,7 +3,9 @@ require 'rails_helper'
 RSpec.describe PostsController, type: :controller do
   let(:valid_post) { create(:post) }
   let(:valid_attributes) { attributes_for(:post) }
-  let(:invalid_attributes) { attributes_for(:post_invalid) }
+  let(:invalid_attributes) { attributes_for(:post,
+                                            title: '',
+                                            body: '') }
   let(:valid_session) { {} }
 
   before do
@@ -77,9 +79,9 @@ RSpec.describe PostsController, type: :controller do
   describe "PUT #update" do
     context "with valid params" do
       let(:new_attributes) {
-        { title: 'Number 1 post',
-          body: 'Body of the Number 1 post',
-          tags: 'some, tags, here' }
+        {title: 'Number 1 post',
+         body: 'B' * 141,
+         tags: 'some, tags, here'}
       }
 
       it "updates the requested post" do
@@ -87,7 +89,7 @@ RSpec.describe PostsController, type: :controller do
         put :update, {:id => post.to_param, :post => new_attributes}, valid_session
         post.reload
         expect(post.title).to eq('Number 1 post')
-        expect(post.body).to eq('Body of the Number 1 post')
+        expect(post.body).to eq('B' * 141)
       end
 
       it "assigns the requested post as @post" do

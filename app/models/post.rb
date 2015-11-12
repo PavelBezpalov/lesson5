@@ -1,8 +1,9 @@
 class Post < ActiveRecord::Base
   belongs_to :user
 
-  validates :title, length: { in: 5..100 }, uniqueness: true
-  validates :body, :user, presence: true
+  validates_presence_of :title, :body, :user
+  validates :title, length: { in: 5..140 }, uniqueness: true
+  validates :body, length: { minimum: 140 }
 
   def self.search_in_title_or_body(query)
     if query.blank?
