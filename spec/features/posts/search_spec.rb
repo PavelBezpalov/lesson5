@@ -2,14 +2,18 @@ require 'rails_helper'
 
 describe 'Search posts' do
   before do
+    user = create(:user)
     create(:post, title: 'Lemon',
            body: 'The lemon (Citrus × limon) is a species of small ' \
-                 'evergreen tree native to Asia.')
+                 'evergreen tree native to Asia.',
+           user: user)
     create(:post, title: 'Apple',
            body: 'The apple tree (Malus domestica) is a deciduous tree ' \
                  'in the rose family best known for its sweet, pomaceous ' \
-                 'fruit, the apple.')
-    create(:post, title: 'cherry')
+                 'fruit, the apple.',
+           user: user)
+    create(:post, title: 'cherry',
+           user: user)
   end
 
   it "find no posts when word 'horse' submitted" do

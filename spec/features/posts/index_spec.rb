@@ -7,7 +7,8 @@ describe 'Listings posts' do
   end
 
   it 'with .json outputs all posts' do
-    posts = create_list(:post, 5)
+    user = create(:user)
+    posts = create_list(:post, 5, user: user)
     visit '/posts.json'
 
     expect(page).to have_content(posts[0].title)

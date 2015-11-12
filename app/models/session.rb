@@ -12,20 +12,16 @@ class Session
   validates :email, email: true, presence: true
   validates :password, presence: true
 
-  validate :find_user_by_email,
-           :check_user_password
+  validate :check_credits
 
-  def find_user_by_email
-    unless @user
-      errors.add(:email, 'User not found')
-    end
+  def check_credits
+    return check_user_password if @user
+    errors.add(:email, 'User not found')
   end
 
   def check_user_password
-    return unless @user
-    unless @user.authenticate(@password)
-      errors.add(:password, 'Password incorrect')
-    end
+    return if @user.authenticate(@password)
+    errors.add(:password, 'Password incorrect')
   end
 end
 

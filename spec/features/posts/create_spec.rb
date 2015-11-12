@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'Creating posts' do
+describe 'Creating posts', js: true do
   def create_post_item(options={})
     options[:title] ||= 'First post'
     options[:body] ||= 'Body of the first post'
@@ -11,7 +11,7 @@ describe 'Creating posts' do
     expect(page).to have_content('New Post')
 
     fill_in 'Title', with: options[:title]
-    fill_in 'Body', with: options[:body]
+    page.execute_script( "simplemde.value('#{options[:body]}')" )
     fill_in 'Tags', with: options[:tags]
     click_button 'Create Post'
   end
@@ -24,7 +24,7 @@ describe 'Creating posts' do
   it 'redirects to the post index page on success' do
     create_post_item
 
-    expect(page).to have_content('First post')
+    expect(page).to have_content('First post'.upcase)
   end
 
   it 'displays an error when the post has no title' do
@@ -56,7 +56,7 @@ characters' do
   it 'displays an error when the post has the same title as existing post' do
     create_post_item
 
-    expect(page).to have_content('First post')
+    expect(page).to have_content('First post'.upcase)
 
     create_post_item
 

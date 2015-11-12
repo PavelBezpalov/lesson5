@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'Editing posts' do
+describe 'Editing posts', js: true do
   def update_post(options={})
     options[:title] ||= 'Number 1 post'
     options[:body] ||= 'Body of the Number 1 post'
@@ -12,7 +12,7 @@ describe 'Editing posts' do
     end
 
     fill_in 'Title', with: options[:title]
-    fill_in 'Body', with: options[:body]
+    page.execute_script( "simplemde.value('#{options[:body]}')" )
     fill_in 'Tags', with: options[:tags]
     click_button 'Update Post'
   end
@@ -20,7 +20,7 @@ describe 'Editing posts' do
   before do
     user = create(:user)
     login(user)
-    @post = create(:post, user_id: user.id)
+    @post = create(:post, user: user)
   end
 
   it 'updates a post successfully with correct information' do

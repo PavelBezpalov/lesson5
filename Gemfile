@@ -59,6 +59,7 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.0'
   # http://www.rubydoc.info/gems/factory_girl/file/GETTING_STARTED.md
   gem "factory_girl_rails", "~> 4.0"
+  gem 'database_cleaner'
 end
 
 group :development do
