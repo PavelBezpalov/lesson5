@@ -3,7 +3,7 @@ class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
 
   def index
-    @posts = Post.search_in_title_or_body(params[:search])
+    @posts = Post.search_in_title_or_body(params[:search]).newest
   end
 
   def show

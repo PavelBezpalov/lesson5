@@ -7,9 +7,9 @@ FactoryGirl.define do
   end
 
   factory :user do
-    name Forgery('name').first_name
-    email Forgery('internet').email_address
-    password Forgery('basic').password
+    sequence(:name) { Forgery('name').first_name }
+    sequence(:email) { Forgery('internet').email_address }
+    sequence(:password) { Forgery('basic').password }
     password_confirmation { password }
   end
 end

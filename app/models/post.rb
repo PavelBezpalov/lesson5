@@ -5,6 +5,8 @@ class Post < ActiveRecord::Base
   validates :title, length: { in: 5..140 }, uniqueness: true
   validates :body, length: { minimum: 140 }
 
+  scope :newest, -> { order('created_at DESC') }
+
   def self.search_in_title_or_body(query)
     if query.blank?
       all

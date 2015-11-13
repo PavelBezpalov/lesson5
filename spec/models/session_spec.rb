@@ -1,13 +1,14 @@
 require 'rails_helper'
 
 RSpec.describe Session, type: :model do
+  let!(:attributes) { attributes_for(:user) }
 
   before do
-    create(:user)
+    create(:user, attributes)
   end
 
   context 'valid' do
-    let(:correct_params) { attributes_for(:user) }
+    let(:correct_params) { attributes }
 
     it 'with correct user credentials' do
       session = Session.new(correct_params)
@@ -16,13 +17,12 @@ RSpec.describe Session, type: :model do
   end
 
   context 'invalid' do
-    let(:no_email) { attributes_for(:user, email: '') }
-    let(:invalid_email) { attributes_for(:user, email: '223112') }
-    let(:not_existed_email) { attributes_for(:user, email: 'user@user.com') }
-    let(:no_email_and_password) { attributes_for(:user,
-                                                 email: '',
+    let(:no_email) { attributes.merge( email: '') }
+    let(:invalid_email) { attributes.merge(email: '223112') }
+    let(:not_existed_email) { attributes.merge(email: 'user@user.com') }
+    let(:no_email_and_password) { attributes.merge(email: '',
                                                  password: '') }
-    let(:incorrect_password) { attributes_for(:user, password: '4244') }
+    let(:incorrect_password) { attributes.merge(password: '4244') }
 
     it 'with blank email' do
       session = Session.new(no_email)

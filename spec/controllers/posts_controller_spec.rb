@@ -18,6 +18,12 @@ RSpec.describe PostsController, type: :controller do
       get :index, {}, valid_session
       expect(assigns(:posts)).to eq([post])
     end
+
+    it "retunrn posts in newest order" do
+      posts = create_list(:post, 5)
+      get :index, {}, valid_session
+      expect(assigns(:posts)[0]).to eq(posts[4])
+    end
   end
 
   describe "GET #show" do
