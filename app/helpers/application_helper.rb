@@ -19,4 +19,11 @@ module ApplicationHelper
     return if obj.nil?
     obj.errors[key].first
   end
+
+  def gravatar(user)
+    gravatar_image_tag(user.email,
+                        alt: user.name,
+                        class: 'some-class',
+                        gravatar: { size: 28 })
+  end
 end

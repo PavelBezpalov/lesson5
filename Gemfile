@@ -21,6 +21,9 @@ gem 'kickstart_rails', '~> 3'
 # Markdown parser
 gem 'redcarpet'
 
+# Gravatar
+gem 'gravatar_image_tag'
+
 # Add autoprefixer
 gem 'autoprefixer-rails'
 

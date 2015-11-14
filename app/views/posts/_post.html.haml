@@ -1,0 +1,19 @@
+.container{id: "#{dom_id(post)}"}
+  %main
+    %h3.post-title= post.title
+    .post-header
+      %span.post-labels
+        - post.tags.split(%r{,+\s+|,+|\s+}).each do |tag|
+          = link_to tag, "/##{tag}"
+      %span.post-credits
+        = gravatar(post.user)
+        = post.user.name
+        on
+        = post.created_at.strftime("%H:%M, %d %B %Y")
+    %div= markdown(post.body)
+  %footer
+    = button_to 'Back', root_path, method: :get if action_name == 'show'
+    - if post.user == current_user
+      - button_to 'Show', post, method: :get, class: 'show'
+      = button_to 'Edit', edit_post_path(post), method: :get, class: 'edit'
+      = button_to 'Destroy', post, class: 'delete', method: :delete, data: {confirm: 'Are you sure?'}
