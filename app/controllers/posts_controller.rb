@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
   before_action :check_authorization, except: [:index, :show]
   before_action :set_post, only: [:show, :edit, :update, :destroy]
+  before_action :rate_system_checks, only: [:like, :dislike]
 
   def index
     @posts = Post.search_in_title_or_body(params[:search]).newest
@@ -57,6 +58,18 @@ class PostsController < ApplicationController
     end
   end
 
+  def like
+    Vote.create(user: current_user, post: @post)
+    redirect_to :back,
+                notice: 'You positive rate was submitted.'
+  end
+
+  def dislike
+    Vote.create(user: current_user, post: @post, positive: false)
+    redirect_to :back,
+                notice: 'You negative rate was submitted.'
+  end
+
   private
 
   def set_post
@@ -69,5 +82,23 @@ class PostsController < ApplicationController
 
   def check_authorization
     raise User::NotAuthorized unless current_user
+  end
+
+  def check_post_owner
+    if @post.user == current_user
+      redirect_to :back, alert: 'You can\'t rate own posts'
+    end
+  end
+
+  def check_already_rated
+    if @post.voters.include?(current_user)
+      redirect_to :back, alert: 'You already rate this post'
+    end
+  end
+
+  def rate_system_checks
+    set_post
+    check_post_owner
+    check_already_rated
   end
 end

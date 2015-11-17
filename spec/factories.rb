@@ -1,4 +1,8 @@
-FactoryGirl.define do
+FactoryGirl.define do  factory :vote do
+    User nil
+Post nil
+  end
+
   factory :post do
     sequence(:title) { Forgery('basic').text }
     body Forgery('lorem_ipsum').characters(141)

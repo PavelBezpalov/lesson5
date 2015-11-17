@@ -1,4 +1,6 @@
 class Post < ActiveRecord::Base
+  has_many :votes, dependent: :destroy
+  has_many :voters, through: :votes, source: :user
   belongs_to :user
 
   validates_presence_of :title, :body, :user
