@@ -11,9 +11,9 @@
       %nav
         %ul
           %li= link_to 'Home', root_path
-          %li= link_to 'New Post', new_post_path if current_user
+          %li= link_to 'Popular', popular_posts_path
           %li
-            = form_tag root_path, method: :get, class: 'search' do
+            = form_tag action_name == 'popular' ? popular_posts_path : root_path, method: :get, class: 'search' do
               = search_field_tag :search, params[:search], placeholder: 'Search', value: params[:search]
               = submit_tag 'Search', name: nil
         %ul
@@ -21,6 +21,7 @@
             %li
               = gravatar(current_user)
               = current_user.name
+            %li= link_to 'New Post', new_post_path
             %li= link_to "Log Out", log_out_path
           - else
             %li= link_to "Sign Up", new_user_path

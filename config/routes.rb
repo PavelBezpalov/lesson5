@@ -8,6 +8,7 @@ Rails.application.routes.draw do
       put 'like'
       put 'dislike'
     end
+    get 'popular', on: :collection
   end
   root 'posts#index'
   # The priority is based upon order of creation: first created -> highest priority.
