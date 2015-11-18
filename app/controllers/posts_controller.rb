@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :check_authorization, except: [:index, :show, :popular]
+  before_action :check_authorization, except: [:index, :show, :popular, :active]
   before_action :set_post, only: [:show, :edit, :update, :destroy]
   before_action :rate_system_checks, only: [:like, :dislike]
 
@@ -10,6 +10,11 @@ class PostsController < ApplicationController
 
   def popular
     @posts = Post.search_in_title_or_body(params[:search]).popular.newest
+    render :index
+  end
+
+  def active
+    @posts = Post.active
     render :index
   end
 

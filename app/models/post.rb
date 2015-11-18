@@ -10,6 +10,7 @@ class Post < ActiveRecord::Base
 
   scope :newest, -> { order('created_at DESC') }
   scope :popular, -> { where('rating > 0').order('rating DESC') }
+  scope :active, -> { order('updated_at DESC') }
 
   def self.search_in_title_or_body(query)
     if query.blank?
