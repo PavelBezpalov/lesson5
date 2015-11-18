@@ -8,7 +8,7 @@
     = f.text_area :body, id: '#mde'
     %p= error_message(@post, :body)
   %div{ class: "#{field_class(@post, :tags)}" }
-    = f.label :tags
+    = f.label :tags, 'Tags (separated by commas or whitespaces)'
     = f.text_field :tags
     %p= error_message(@post, :tags)
   .submit

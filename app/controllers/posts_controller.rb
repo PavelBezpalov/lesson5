@@ -4,6 +4,7 @@ class PostsController < ApplicationController
   before_action :rate_system_checks, only: [:like, :dislike]
 
   def index
+    return @posts = Post.search_by_tag(params[:tag]).newest if params[:tag]
     @posts = Post.search_in_title_or_body(params[:search]).newest
   end
 

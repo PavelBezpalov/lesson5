@@ -20,4 +20,8 @@ class Post < ActiveRecord::Base
             query: "%#{query}%")
     end
   end
+
+  def self.search_by_tag(tag)
+      where('lower(tags) LIKE ?', "%#{tag.downcase}%")
+  end
 end
