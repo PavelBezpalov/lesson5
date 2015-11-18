@@ -1,0 +1,10 @@
+.container{id: "#{dom_id(comment)}"}
+  %header
+    .comment-header
+      %span.comment-credits
+        = gravatar(comment.user)
+        = comment.user.name
+        on
+        = comment.created_at.strftime("%H:%M, %d %B %Y")
+  %main
+    %div= comment.body

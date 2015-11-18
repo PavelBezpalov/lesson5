@@ -85,10 +85,6 @@ class PostsController < ApplicationController
     params.require(:post).permit(:title, :body, :tags)
   end
 
-  def check_authorization
-    raise User::NotAuthorized unless current_user
-  end
-
   def check_post_owner
     if @post.user == current_user
       redirect_to :back, alert: 'You can\'t rate own posts'

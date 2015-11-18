@@ -34,4 +34,8 @@ class ApplicationController < ActionController::Base
       redirect_to new_session_path,
                   alert: 'You must be logged in to access that action'
   end
+
+  def check_authorization
+    raise User::NotAuthorized unless current_user
+  end
 end
