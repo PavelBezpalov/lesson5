@@ -8,8 +8,6 @@ Rails.application.routes.draw do
       put 'like'
       put 'dislike'
     end
-    get 'popular', on: :collection
-    get 'active', on: :collection
   end
   post '/comments/create'
   root 'posts#index'

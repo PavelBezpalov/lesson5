@@ -4,7 +4,10 @@
     .post-header
       %span.post-labels
         - post.tags.split(%r{,+\s+|,+|\s+}).each do |tag|
-          = link_to tag, posts_path(tag: tag)
+          - if params[:mode]
+            = link_to tag, posts_path(tag: tag, mode: params[:mode])
+          - else
+            = link_to tag, posts_path(tag: tag)
       %span.post-credits
         = gravatar(post.user)
         = post.user.name

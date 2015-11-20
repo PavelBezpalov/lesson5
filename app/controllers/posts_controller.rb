@@ -1,21 +1,10 @@
 class PostsController < ApplicationController
-  before_action :check_authorization, except: [:index, :show, :popular, :active]
+  before_action :check_authorization, except: [:index, :show]
   before_action :set_post, only: [:show, :edit, :update, :destroy]
   before_action :rate_system_checks, only: [:like, :dislike]
 
   def index
-    return @posts = Post.search_by_tag(params[:tag]).newest if params[:tag]
-    @posts = Post.search_in_title_or_body(params[:search]).newest
-  end
-
-  def popular
-    @posts = Post.search_in_title_or_body(params[:search]).popular.newest
-    render :index
-  end
-
-  def active
-    @posts = Post.active
-    render :index
+    @posts = Post.index_view_mode(params)
   end
 
   def show

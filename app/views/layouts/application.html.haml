@@ -11,11 +11,21 @@
       %nav
         %ul
           %li= link_to 'Home', root_path
-          %li= link_to 'Popular', popular_posts_path
-          %li= link_to 'Active', active_posts_path
           %li
-            = form_tag action_name == 'popular' ? popular_posts_path : root_path, method: :get, class: 'search' do
+            - if params[:tag]
+              = link_to 'Popular', posts_path(mode: 'popular', tag: params[:tag])
+            - else
+              = link_to 'Popular', posts_path(mode: 'popular')
+          %li
+            - if params[:tag]
+              = link_to 'Active', posts_path(mode: 'active', tag: params[:tag])
+            - else
+              = link_to 'Active', posts_path(mode: 'active')
+          %li
+            = form_tag posts_path, method: :get, class: 'search' do
               = search_field_tag :search, params[:search], placeholder: 'Search', value: params[:search]
+              = hidden_field_tag :mode, params[:mode] if params[:mode]
+              = hidden_field_tag :tag, params[:tag] if params[:tag]
               = submit_tag 'Search', name: nil
         %ul
           - if current_user
