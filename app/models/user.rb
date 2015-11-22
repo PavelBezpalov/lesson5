@@ -10,6 +10,11 @@ class User < ActiveRecord::Base
 
   before_save :downcase_email
 
+  def name
+    return Faker::Name.name if self[:name] == ''
+    self[:name]
+  end
+
   private
 
   def downcase_email

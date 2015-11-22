@@ -42,6 +42,13 @@
     background: none;
     display: block;
 
+    .post-stats {
+      float: left;
+      height: 36px;
+      font-size: 18px;
+      line-height: 36px;
+    }
+
     .post-likes {
       float: right;
       display: flex;
