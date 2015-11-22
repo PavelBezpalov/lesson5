@@ -1,0 +1,19 @@
+#comments {
+  padding: 0 25px;
+
+  header {
+      font: italic normal 11px 'Source Sans Pro', sans-serif;
+      display: inherit;
+      line-height: 1.25;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+  }
+}
+
+.body {
+  padding-bottom: 10px;
+
+  textarea {
+    height: 80px;
+  }
+}

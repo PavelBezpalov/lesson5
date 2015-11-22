@@ -1,0 +1,64 @@
+.logo {
+  @include column(4, 4);
+  text-align: center;
+  h1 {
+    font-family: 'Orbitron', sans-serif;
+  }
+}
+
+.content {
+  @include wrapper($fluid: true);
+}
+
+.navbar {
+  @include navbar();
+}
+
+.alert {
+  @include alert();
+}
+
+.centralize {
+  text-align: center;
+}
+
+.container {
+  @include container();
+}
+
+form {
+  @include form();
+
+  .group {
+    @include form_group();
+  }
+
+  textarea {
+    width: 400px;
+    height: 200px;
+  }
+
+  .center input {
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  input[type=submit] {
+    @include button($primary-color);
+  }
+}
+
+form.search {
+  margin: 0;
+  input {
+    display: inline;
+  }
+  input[type=submit] {
+    @include button($primary-color, $size: 0.95);
+    margin: 0 0 2.5px 3px;
+  }
+}
+
+table {
+  @include table();
+}

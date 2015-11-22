@@ -23,7 +23,7 @@ module ApplicationHelper
   def gravatar(user)
     gravatar_image_tag(user.email,
                         alt: user.name,
-                        class: 'some-class',
+                        class: 'gravatar',
                         gravatar: { size: 28 })
   end
 end

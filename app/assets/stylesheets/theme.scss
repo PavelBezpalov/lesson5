@@ -1,0 +1,131 @@
+.navbar {
+  background-color: #1A1A1A;
+  nav ul li a:not([role=button]) {
+    color: #E424F0;
+  }
+  nav ul li a:not([role=button]):hover {
+    color: #E424F0;
+    text-decoration: underline;
+    background-color: #262626;
+    border-color: #E424F0;
+  }
+  nav ul li {
+    color: #6C89E5;
+  }
+}
+
+form.search {
+  input {
+    background-color: #262626;
+    border-color: #262626;
+    color: #C70D0C;
+  }
+  :focus {
+    box-shadow: inset 0 0 0 2px #7E71D0;
+  }
+  input[type=submit] {
+    background-color: #262626;
+    border-color: #E424F0;
+    color: #E424F0;
+  }
+}
+
+::-webkit-input-placeholder {
+  color: #6C89E5;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+  color: #6C89E5;
+}
+
+::-moz-placeholder { /* Firefox 19+ */
+  color: #6C89E5;
+}
+
+:-ms-input-placeholder {
+  color: #6C89E5;
+}
+
+body {
+  background-color: #000000;
+  color: #5A6DD0;
+}
+
+a {
+  color: #E424F0;
+  :hover {
+    text-decoration: underline;
+  }
+}
+
+.alert {
+  background-color: #262626;
+  border-color: red;
+  color: red;
+}
+
+.logo, h1 {
+  color: #6C89E5;
+}
+
+.container {
+  background-color: #1A1A1A;
+  border-color: #1A1A1A;
+  h3 {
+    color: #5A6DD0;
+  }
+  .post-credits {
+    color: #C70D0C;
+  }
+
+  p {
+    color: #5A6DD0;
+  }
+}
+
+form {
+  input[type] {
+    background-color: #262626;
+    border-color: #262626;
+    color: #C70D0C;
+  }
+
+  input[type]:focus, textarea:focus {
+    box-shadow: inset 0 0 0 2px #7E71D0;
+  }
+
+  input[type=submit] {
+    background-color: #262626;
+    border-color: #E424F0;
+    color: #E424F0;
+  }
+
+  textarea {
+    background-color: #262626;
+    border-color: #262626;
+    color: #C70D0C;
+  }
+
+  label {
+    color: #5A6DD0;
+  }
+}
+
+.editor-toolbar {
+  background-color: #fff;
+}
+
+.CodeMirror {
+  background-color: #262626;
+}
+
+.CodeMirror-code {
+  color: #C70D0C;
+}
+
+.comment {
+  header {
+    background-color: #1A1A1A;
+    color: #C70D0C;
+  }
+}

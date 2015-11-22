@@ -1,6 +1,6 @@
 %h4 Comments
-= form_tag controller: 'comments', action: :create, method: :post do
-  %div
+= form_tag controller: 'comments', action: :create do
+  .body
     = text_area_tag :body
     = hidden_field_tag(:post_id, post.id)
   .submit
