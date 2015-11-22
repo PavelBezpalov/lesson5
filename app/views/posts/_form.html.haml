@@ -3,6 +3,10 @@
     = f.label :title
     = f.text_field :title
     %p= error_message(@post, :title)
+  %div{ class: "#{field_class(@post, :cover_image)}" }
+    = f.label :cover_image, 'Url to Cover image'
+    = f.text_field :cover_image
+    %p= error_message(@post, :cover_image)
   %div{ class: "#{field_class(@post, :body)}" }
     = f.label :body
     = f.text_area :body, id: '#mde'

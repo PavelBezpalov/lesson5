@@ -71,10 +71,10 @@ a {
 .container {
   background-color: #1A1A1A;
   border-color: #1A1A1A;
-  h3 {
+  .post-title a {
     color: #5A6DD0;
   }
-  .post-credits {
+  .post-datetime {
     color: #C70D0C;
   }
 
@@ -127,5 +127,25 @@ form {
   header {
     background-color: #1A1A1A;
     color: #C70D0C;
+  }
+}
+
+.post {
+  footer {
+    .post-likes {
+      .like {
+        background-color: #E424F0;
+      }
+      .dislike {
+        background-color: #6C89E5;
+      }
+
+      .post-rating {
+        color: #E424F0;
+      }
+      .negative {
+        color: #6C89E5;
+      }
+    }
   }
 }

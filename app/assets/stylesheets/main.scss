@@ -6,6 +6,11 @@
   }
 }
 
+.gravatar {
+  vertical-align: middle;
+  border-radius: 25%;
+}
+
 .content {
   @include wrapper($fluid: true);
 }

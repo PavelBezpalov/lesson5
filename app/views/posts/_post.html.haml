@@ -1,26 +1,36 @@
 .container.post{id: "#{dom_id(post)}"}
+  %header
+    .post-title
+      = link_to post.title, post_path(post)
+    .post-credits
+      .post-datetime= post.created_at.strftime("%H:%M, %d %B %Y")
+      .post-author
+        = link_to user_path(post.user) do
+          = post.user.name
+          = gravatar(post.user)
   %main
-    %h3.post-title= post.title
-    .post-header
-      %span.post-labels
-        - post.tags.split(%r{,+\s+|,+|\s+}).each do |tag|
-          - if params[:mode]
-            = link_to tag, posts_path(tag: tag, mode: params[:mode])
-          - else
-            = link_to tag, posts_path(tag: tag)
-      %span.post-credits
-        = gravatar(post.user)
-        = post.user.name
-        on
-        = post.created_at.strftime("%H:%M, %d %B %Y")
     %div= markdown(post.body)
+    .post-labels
+      - post.tags.split(%r{,+\s+|,+|\s+}).each do |tag|
+        - if params[:mode]
+          = link_to tag, posts_path(tag: tag, mode: params[:mode])
+        - else
+          = link_to tag, posts_path(tag: tag)
   %footer
-    - if current_user
-      - unless post.user == current_user
-        = button_to 'Like', like_post_path(post), method: :put
-        = button_to 'Dislike', dislike_post_path(post), method: :put
-    = button_to 'Show', post, method: :get, class: 'show' unless action_name == 'show'
-    = button_to 'Back', root_path, method: :get if action_name == 'show'
-    - if post.user == current_user
-      = button_to 'Edit', edit_post_path(post), method: :get, class: 'edit'
-      = button_to 'Destroy', post, class: 'delete', method: :delete, data: {confirm: 'Are you sure?'}
+    .post-stats
+      = link_to post_path(post, anchor: 'comments') do
+        = fa_icon 'comments'
+        = post.comments.count
+      = fa_icon 'star'
+    .post-likes
+      = button_to like_post_path(post), method: :put, class: 'like' do
+        = fa_icon 'thumbs-o-up'
+      %span.post-rating{ class: ('negative' if post.rating < 0) }
+        = post.rating
+      = button_to dislike_post_path(post), method: :put, class: 'dislike' do
+        = fa_icon 'thumbs-o-down'
+    .post-buttons
+      = button_to 'Back', root_path, method: :get if action_name == 'show'
+      - if post.user == current_user
+        = button_to 'Edit', edit_post_path(post), method: :get, class: 'edit'
+        = button_to 'Destroy', post, class: 'delete', method: :delete, data: {confirm: 'Are you sure?'}

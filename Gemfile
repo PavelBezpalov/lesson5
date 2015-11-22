@@ -9,14 +9,13 @@ gem 'pg'
 # Heroku gems
 gem 'rails_12factor', group: :production
 # Use SCSS for stylesheets
-# gem 'sass-rails', '~> 5.0'
+gem 'sass-rails', '~> 5.0'
 
 # Add kickstart styles
-# Use Sass 3.4 and above.
-gem 'sass', '~> 3.4'
-
-# Add the kickstart_rails gem
 gem 'kickstart_rails', '~> 3'
+
+# Icons
+gem 'font-awesome-rails'
 
 # Markdown parser
 gem 'redcarpet'
