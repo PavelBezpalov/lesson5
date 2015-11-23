@@ -77,7 +77,7 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:title, :body, :tags)
+    params.require(:post).permit(:title, :body, :tags, :cover_image)
   end
 
   def check_post_owner
