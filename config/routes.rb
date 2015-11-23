@@ -5,8 +5,9 @@ Rails.application.routes.draw do
   resources :users, only: [:new, :create, :show]
   resources :posts do
     member do
-      put 'like'
-      put 'dislike'
+      post 'like'
+      post 'dislike'
+      post 'star'
     end
   end
   post '/comments/create'

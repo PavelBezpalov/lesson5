@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   before_action :check_authorization, except: [:index, :show]
-  before_action :set_post, only: [:show, :edit, :update, :destroy]
+  before_action :set_post, only: [:show, :edit, :update, :destroy, :star]
   before_action :rate_system_checks, only: [:like, :dislike]
 
   def index
@@ -68,6 +68,18 @@ class PostsController < ApplicationController
     Vote.create(user: current_user, post: @post, positive: false)
     redirect_to :back,
                 notice: 'You negative rate was submitted.'
+  end
+
+  def star
+    if @post.starred_users.exists?(current_user)
+      @post.starred_users.destroy(current_user)
+      redirect_to :back,
+                  alert: 'Post deleted from your starred posts.'
+    else
+      @post.starred_users << current_user
+      redirect_to :back,
+                  notice: 'Post added to your starred posts.'
+    end
   end
 
   private
