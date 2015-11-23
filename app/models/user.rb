@@ -16,6 +16,14 @@ class User < ActiveRecord::Base
     self[:name]
   end
 
+  def to_param
+    "#{id}-#{name.downcase.gsub(' ', '-')}"
+  end
+
+  def rating
+    posts.sum(:rating)
+  end
+
   private
 
   def downcase_email
