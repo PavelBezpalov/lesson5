@@ -1,15 +1,16 @@
-%table
-  %tr
-    %th Rating
-    %th Author
-    %th Posts
-    %th Comments
-  - @users.each do |user|
+.authors
+  %table
     %tr
-      %td= user.rating
-      %td
-        = link_to user_path(user) do
-          = gravatar(user)
-          = user.name
-      %td= user.posts.count
-      %td= user.comments.count
+      %th Rating
+      %th Author
+      %th Posts
+      %th Comments
+    - @users.each do |user|
+      %tr
+        %td= user.rating
+        %td
+          = link_to user_path(user) do
+            = gravatar(user)
+            = user.name
+        %td= user.posts.count
+        %td= user.comments.count

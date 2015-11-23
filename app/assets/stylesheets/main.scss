@@ -65,5 +65,8 @@ form.search {
 }
 
 table {
-  @include table();
+  @include table($blank: true, $zebra: true);
+  tr:hover {
+    border: 1px solid #47A5DF;
+  }
 }

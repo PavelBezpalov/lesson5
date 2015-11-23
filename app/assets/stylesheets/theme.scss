@@ -9,6 +9,13 @@
     background-color: #262626;
     border-color: #E424F0;
   }
+
+  nav ul li a:not([role=button]).active {
+    color: #5A6DD0;
+    background: #262626;
+    border-color: #5A6DD0;
+  }
+
   nav ul li {
     color: #6C89E5;
   }
@@ -132,6 +139,23 @@ form {
 
 .post {
   footer {
+    .post-labels {
+      .tag {
+        a {
+          color: #E424F0;
+        }
+        color: #E424F0;
+        background-color: #1A1A1A;
+        border-color: #E424F0;
+      }
+
+      .active {
+        background-color: #1A1A1A;
+        color: #5A6DD0;
+        border-color: #5A6DD0;
+      }
+    }
+
     .post-likes {
       .like {
         background-color: #E424F0;
@@ -147,5 +171,15 @@ form {
         color: #6C89E5;
       }
     }
+  }
+}
+
+table {
+  tbody tr:nth-child(even), thead tr:nth-child(even) {
+    background-color: #1A1A1A;
+  }
+
+  tr:hover {
+    border-color: #E424F0;
   }
 }

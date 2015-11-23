@@ -19,25 +19,31 @@
         %p= truncate(strip_tags(markdown(post.body)), length: 400, separator: '.', omission: '.')
   %footer
     .post-labels
-    - post.tags.split(%r{,+\s+|,+|\s+}).each do |tag|
-      - if params[:mode]
-        = link_to tag, posts_path(tag: tag, mode: params[:mode])
-      - else
-        = link_to tag, posts_path(tag: tag)
+      - post.tags.split(%r{,+\s+|,+|\s+}).each do |tag|
+        - if params[:mode]
+          = link_to posts_path(tag: tag, mode: params[:mode]) do
+            %span.tag{class: ('active' if params[:tag] == tag)}
+              = tag
+        - else
+          = link_to posts_path(tag: tag) do
+            %span.tag{class: ('active' if params[:tag] == tag)}
+              = tag
     .post-stats-wrap
       .post-stats
         = link_to post_path(post, anchor: 'comments') do
-          - if post.commenters.exists?(current_user)
-            = fa_icon 'comments'
-          - else
-            = fa_icon 'comments-o'
-          = post.comments.count
+          %span
+            - if post.commenters.exists?(current_user)
+              = fa_icon 'comments'
+            - else
+              = fa_icon 'comments-o'
+            = post.comments.count
         = link_to star_post_path(post), method: :post do
-          - if post.starred_users.exists?(current_user)
-            = fa_icon 'star'
-          - else
-            = fa_icon 'star-o'
-          = post.starred_users.count
+          %span
+            - if post.starred_users.exists?(current_user)
+              = fa_icon 'star'
+            - else
+              = fa_icon 'star-o'
+            = post.starred_users.count
         = link_to 'Read more', post_path(post)
       .post-likes
         = button_to like_post_path(post), class: 'like' do

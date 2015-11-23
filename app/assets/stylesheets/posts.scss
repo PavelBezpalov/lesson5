@@ -68,8 +68,19 @@
     display: block;
 
     .post-labels {
-      margin: 10px 0 0 0;
       display: block;
+
+      .tag {
+          @include label(map-get($colors, blue));
+        a {
+          color: white;
+        }
+        margin-right: 3px;
+      }
+
+      .active {
+        background-color: green;
+      }
     }
 
     .post-stats {

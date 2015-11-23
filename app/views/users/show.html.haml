@@ -7,30 +7,32 @@
 %p
   %strong Rating:
   = @user.rating
-
-%h4 Posts
-%table
-  %tr
-    %th Title
-    %th Rating
-  - @user.posts.each do |post|
+- unless @user.posts.empty?
+  %h4 Posts
+  %table
     %tr
-      %td= link_to post.title, post_path(post)
-      %td= post.rating
-
-%h4 Starred posts
-%table
-  %tr
-    %th Title
-    %th Author
-    - if @user == current_user
-      %th Unstar
-  - @user.starred_posts.each do |post|
+      %th Title
+      %th Rating
+    - @user.posts.each do |post|
+      %tr
+        %td= link_to post.title, post_path(post)
+        %td.center-align
+          = post.rating
+- unless @user.starred_posts.empty?
+  %h4 Starred posts
+  %table
     %tr
-      %td= link_to post.title, post_path(post)
-      %td
-        = link_to user_path(post.user) do
-          = post.user.name
-          = gravatar(post.user)
+      %th Title
+      %th Author
       - if @user == current_user
-        %td= link_to 'Unstar', star_post_path(post), method: :post
+        %th Unstar
+    - @user.starred_posts.each do |post|
+      %tr
+        %td= link_to post.title, post_path(post)
+        %td.center-align
+          = link_to user_path(post.user) do
+            = post.user.name
+            = gravatar(post.user)
+        - if @user == current_user
+          %td.center-align
+            = link_to 'Unstar', star_post_path(post), method: :post
