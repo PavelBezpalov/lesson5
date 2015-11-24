@@ -1,7 +1,8 @@
-.container.comment{id: "#{dom_id(comment)}"}
+.container{id: "#{dom_id(comment)}"}
   %header
-    %span
+    = link_to user_path(comment.user) do
       = gravatar(comment.user)
-      = "#{comment.user.name} on #{comment.created_at.strftime("%H:%M, %d %B %Y")}"
+      = comment.user.name
+    = comment.created_at.strftime("%H:%M, %d %B %Y")
   %main
     = comment.body

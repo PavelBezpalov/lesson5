@@ -130,10 +130,15 @@ form {
   color: #C70D0C;
 }
 
-.comment {
+#comments {
   header {
     background-color: #1A1A1A;
     color: #C70D0C;
+  }
+
+  main {
+    background-color: #000000;
+    border-color: #1A1A1A;
   }
 }
 
