@@ -2,6 +2,7 @@ class PostsController < ApplicationController
   before_action :check_authorization, except: [:index, :show]
   before_action :set_post, only: [:show, :edit, :update, :destroy, :star]
   before_action :rate_system_checks, only: [:like, :dislike]
+  before_action :check_modify_permissions, only: [:edit, :update, :destroy]
 
   def index
     @posts = Post.index_view_mode(params)
@@ -90,6 +91,12 @@ class PostsController < ApplicationController
 
   def post_params
     params.require(:post).permit(:title, :body, :tags, :cover_image)
+  end
+
+  def check_modify_permissions
+    unless @post.user == current_user
+      redirect_to :back, alert: 'Permission denied.'
+    end
   end
 
   def check_post_owner
