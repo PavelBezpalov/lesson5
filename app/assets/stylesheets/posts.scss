@@ -48,6 +48,13 @@
         display:block;
         margin:auto;
       }
+
+      iframe {
+        max-width: 500px;
+        height: 700px;
+        display:block;
+        margin:auto;
+      }
     }
   }
 
@@ -59,6 +66,11 @@
       max-width: 300px;
       img {
         max-width: 100%;
+      }
+
+      iframe {
+        max-width: 300px;
+        max-height: 300px;
       }
     }
   }

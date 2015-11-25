@@ -10,12 +10,22 @@ class Post < ActiveRecord::Base
   validates :title, length: { in: 5..140 }, uniqueness: true
   validates :body, length: { minimum: 140 }
 
+  after_save :check_cover_image
+
   default_scope { order('created_at DESC') }
 
   def self.index_view_mode(params)
     select_view_mode(params[:mode])
     .search_by_tag(params[:tag])
     .search_in_title_or_body(params[:search])
+  end
+
+  protected
+
+  def check_cover_image
+    if cover_image.include?('bandcamp.com') && cover_image.split(' ').count < 3
+      Album.new(self).update
+    end
   end
 
   private

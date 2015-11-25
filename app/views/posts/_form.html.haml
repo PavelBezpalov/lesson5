@@ -4,7 +4,7 @@
     = f.text_field :title
     %p= error_message(@post, :title)
   %div{ class: "#{field_class(@post, :cover_image)}" }
-    = f.label :cover_image, 'Url to Cover image'
+    = f.label :cover_image, 'Url to Cover image or Bandcamp album'
     = f.text_field :cover_image
     %p= error_message(@post, :cover_image)
   %div{ class: "#{field_class(@post, :body)}" }

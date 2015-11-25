@@ -11,7 +11,10 @@
   %main{class: ('preview' unless action_name == 'show')}
     - unless post.cover_image.blank?
       .post-cover-image
-        = image_tag(post.cover_image)
+        - if post.cover_image.include?('bandcamp.com')
+          = render partial: 'shared/player', locals: { attr: post.cover_image.split(' ')}
+        - else
+          = image_tag(post.cover_image)
     .post-body
       - if action_name == 'show'
         = markdown(post.body)

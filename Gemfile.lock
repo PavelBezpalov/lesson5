@@ -220,6 +220,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   kickstart_rails (~> 3)
+  nokogiri
   pg
   rails (= 4.2.4)
   rails_12factor

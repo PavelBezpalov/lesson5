@@ -2,7 +2,7 @@
 %html
   %head
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
-    %title RoR coding notes
+    %title Retrowave
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
@@ -57,7 +57,7 @@
               = link_to "Log In", log_in_path,
                  class: ('active' if current_page?(log_in_path))
     .logo
-      %h1 RoR coding notes
+      %h1 Retrowave
     .content
       = yield
     - flash.each do |type, message|
