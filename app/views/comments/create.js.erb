@@ -1,0 +1,2 @@
+$("<%= j render @comment %>").prependTo('#comments').hide().fadeIn('slow');
+$(document).scrollTop( $("#<%= dom_id(@comment) %>").offset().top );

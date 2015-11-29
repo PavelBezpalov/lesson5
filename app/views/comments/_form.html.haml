@@ -1,5 +1,5 @@
 %h4 Comments
-= form_tag controller: 'comments', action: :create do
+= form_tag '/comments/create', remote: true do
   .body
     = text_area_tag :body
     = hidden_field_tag(:post_id, post.id)
