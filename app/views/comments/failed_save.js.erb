@@ -1,0 +1,5 @@
+<% if @parent_comment %>
+$('#add_child_comment').html('<%= j render('form') %>');
+<% else %>
+$('#add_comment').html('<%= j render('form') %>');
+<% end %>

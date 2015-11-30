@@ -9,8 +9,8 @@ Rails.application.routes.draw do
       post 'dislike'
       post 'star'
     end
+    resources :comments, except: [:show, :edit]
   end
-  post '/comments/create'
   root 'posts#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

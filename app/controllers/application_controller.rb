@@ -31,8 +31,13 @@ class ApplicationController < ActionController::Base
   end
 
   def require_user
-      redirect_to new_session_path,
-                  alert: 'You must be logged in to access that action'
+    respond_to do |format|
+      flash[:alert] = 'You must be logged in to access that action'
+      format.html do
+        redirect_to new_session_path
+      end
+      format.js { render js: "window.location = '#{new_session_path}'" }
+    end
   end
 
   def check_authorization

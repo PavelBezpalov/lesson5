@@ -1,7 +1,8 @@
-%h4 Comments
-= form_tag '/comments/create', remote: true do
-  .body
-    = text_area_tag :body
-    = hidden_field_tag(:post_id, post.id)
+= form_for [@post, @new_comment], remote: true do |f|
+  %div{ class: "#{field_class(@new_comment, :body)}" }
+    = f.text_area :body
+    %p= error_message(@new_comment, :body)
+  - if @parent_comment
+    = f.hidden_field :parent_id, value: @parent_comment.id
   .submit
-    = submit_tag 'Add comment'
+    = f.submit 'Add comment'

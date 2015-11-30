@@ -1,5 +1,6 @@
 =render @post
+%h4 Comments
 #add_comment
-  =render partial: 'comments/form', locals: { post: @post }
+  =render 'comments/form'
 #comments
   =render @comments

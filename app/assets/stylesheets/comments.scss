@@ -1,5 +1,9 @@
-#comments, #add_comment {
-  padding: 0 25px;
+.padding {
+  padding-left: 45px;
+}
+
+#comments, #add_comment, #add_child_comment {
+  padding-right: 25px;
 
   header {
       font: italic normal 11px 'Source Sans Pro', sans-serif;
@@ -8,10 +12,6 @@
       text-transform: uppercase;
       letter-spacing: 1px;
   }
-}
-
-.body {
-  padding-bottom: 10px;
 
   textarea {
     height: 80px;
