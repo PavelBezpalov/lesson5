@@ -1,0 +1,6 @@
+$('#add_child_comment').remove();
+<% if @parent_comment %>
+  $('<%= j render @comment %>').insertAfter($('#<%= dom_id(@parent_comment) %>')).hide().fadeIn('slow');
+<% else %>
+  $("<%= j render @comment %>").prependTo('#comments').hide().fadeIn('slow');
+<% end %>

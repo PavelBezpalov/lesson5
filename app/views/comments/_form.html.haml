@@ -1,8 +1,9 @@
-= form_for [@post, @new_comment], remote: true do |f|
-  %div{ class: "#{field_class(@new_comment, :body)}" }
+- comment = @new_comment || @comment
+= form_for [@post, comment], remote: true do |f|
+  %div{ class: "#{field_class(comment, :body)}" }
     = f.text_area :body
-    %p= error_message(@new_comment, :body)
+    %p= error_message(comment, :body)
   - if @parent_comment
     = f.hidden_field :parent_id, value: @parent_comment.id
   .submit
-    = f.submit 'Add comment'
+    = f.submit

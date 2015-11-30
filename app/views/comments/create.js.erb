@@ -1,4 +1,3 @@
-var comment_container = "#<%= dom_id(@comment) %>";
 <% if @parent_comment %>
   $('#add_child_comment').remove();
   $('<%= j render @comment %>').appendTo($('#<%= dom_id(@parent_comment) %>').parent()).hide().fadeIn('slow');

@@ -10,7 +10,7 @@ class PostsController < ApplicationController
 
   def show
     @comments = @post.comments.roots
-    @new_comment = @post.comments.new
+    @comment = @post.comments.new
   end
 
   def new

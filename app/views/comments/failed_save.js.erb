@@ -1,4 +1,4 @@
-<% if @parent_comment %>
+<% if @parent_comment || action_name == 'update' %>
 $('#add_child_comment').html('<%= j render('form') %>');
 <% else %>
 $('#add_comment').html('<%= j render('form') %>');

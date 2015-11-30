@@ -16,4 +16,23 @@
   textarea {
     height: 80px;
   }
+
+  footer {
+    .comment-buttons {
+      display: flex;
+
+      form {
+        margin-bottom: 0;
+
+        input[type=submit] {
+          @include button($primary-color, $size: 0.7);
+        }
+      }
+
+      .button_to:nth-child(2) {
+        margin-left: 5px;
+        margin-right: 5px;
+      }
+    }
+  }
 }

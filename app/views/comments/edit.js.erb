@@ -1,0 +1,2 @@
+$('#add_child_comment').remove();
+$('#<%= dom_id(@comment) %>').after('<div id="add_child_comment"><%= j render('form') %></div>').remove();

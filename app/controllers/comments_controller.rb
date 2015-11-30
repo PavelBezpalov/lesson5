@@ -1,40 +1,69 @@
 class CommentsController < ApplicationController
+  before_action :set_post, only: [:new, :create, :edit, :update]
+  before_action :set_comment, only: [:edit, :update, :destroy]
   before_action :check_authorization
+  before_action :check_modify_permissions, only: [:edit, :update, :destroy]
 
   def new
-    @post = Post.find(params[:post_id])
     @parent_comment = Comment.find(params[:parent_id])
-    @new_comment = Comment.new
+    @comment = @post.comments.new
   end
 
   def create
-    @comment = Comment.new(comment_params)
+    @comment = @post.comments.new(comment_params)
     @comment.user = current_user
     begin
-    @parent_comment = Comment.find(params[:comment][:parent_id])
+      @parent_comment = Comment.find(params[:comment][:parent_id])
     rescue ActiveRecord::RecordNotFound
     end
-    @post = Post.find(params[:post_id])
-    @comment.post = @post
     if @comment.save
       @new_comment = @post.comments.new
       respond_to do |format|
-        format.html do
-          flash[:success] = 'Your comment has been posted.'
-          redirect_to @post
-        end
         format.js
       end
     else
-      @new_comment = @comment
       respond_to do |format|
-        format.html { render @post }
         format.js { render action: 'failed_save' }
       end
     end
   end
 
+  def edit
+  end
+
+  def update
+    @parent_comment = @comment.parent if @comment.parent
+    if @comment.update(body: params[:comment][:body])
+      respond_to do |format|
+        format.js
+      end
+    else
+      respond_to do |format|
+        format.js { render action: 'failed_save' }
+      end
+    end
+  end
+
+  def destroy
+    @comment.destroy
+  end
+
   private
+
+  def check_modify_permissions
+    unless @comment.user == current_user
+      flash[:alert] = 'Permission denied.'
+      render js: "window.location = '#{new_session_path}'"
+    end
+  end
+
+  def set_post
+    @post = Post.find(params[:post_id])
+  end
+
+  def set_comment
+    @comment = Comment.find(params[:id])
+  end
 
   def comment_params
     params.require(:comment).permit(:body, :parent_id)

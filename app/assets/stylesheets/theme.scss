@@ -142,6 +142,12 @@ form {
   }
 }
 
+#comments footer .comment-buttons form input[type=submit] {
+  background-color: #262626;
+  border-color: #E424F0;
+  color: #E424F0;
+}
+
 .post {
   footer {
     .post-labels {
