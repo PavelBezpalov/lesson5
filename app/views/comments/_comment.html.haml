@@ -1,4 +1,4 @@
-.padding
+%div{ class: ('padding' if comment.depth > 0) }
   .container{id: "#{dom_id(comment)}"}
     %header
       = link_to user_path(comment.user) do
@@ -7,11 +7,15 @@
       = comment.created_at.strftime("%H:%M, %d %B %Y")
     %main
       = comment.body
-    - if comment.depth < 4 || comment.user == current_user
+    - if comment.depth < 4 && comment.user == current_user
       %footer
         - if comment.depth < 4
           = link_to 'Reply', new_post_comment_path(@post, parent_id: comment.id), remote: true
-        - if comment.user == current_user
+        - if comment.user == current_user && comment.rule_5_minutes?
+          .countdown
+            %span Locked after:
+            %span{ id: "countdown_#{comment.id}" }
+            = render partial: '/comments/timer', locals: { comment: comment }
           .comment-buttons
             = button_to 'Edit',
                          edit_post_comment_path(@post, comment),
@@ -25,4 +29,4 @@
                          data: {confirm: 'Are you sure?'},
                          remote: true
   - unless action_name == 'update'
-    = render partial: 'comments/comment', collection: comment.children if comment.children.present?
+    = render partial: 'comments/comment', collection: comment.children.asc if comment.children.present?

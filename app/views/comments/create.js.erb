@@ -1,7 +1,9 @@
 <% if @parent_comment %>
   $('#add_child_comment').remove();
   $('<%= j render @comment %>').appendTo($('#<%= dom_id(@parent_comment) %>').parent()).hide().fadeIn('slow');
+  $(window).scrollTop($('#<%= dom_id(@comment) %>').offset().top);
 <% else %>
   $('#add_comment').html('<%= j render('form') %>');
   $("<%= j render @comment %>").prependTo('#comments').hide().fadeIn('slow');
+  $(window).scrollTop($('#<%= dom_id(@comment) %>').offset().top);
 <% end %>

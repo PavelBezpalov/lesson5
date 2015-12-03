@@ -1,6 +1,8 @@
-$('#add_child_comment').remove();
+var form = $('#add_child_comment');
 <% if @parent_comment %>
-  $('<%= j render @comment %>').insertAfter($('#<%= dom_id(@parent_comment) %>')).hide().fadeIn('slow');
+  form.parent().after($('<%= j render @comment %>'));
 <% else %>
-  $("<%= j render @comment %>").prependTo('#comments').hide().fadeIn('slow');
+  form.parent().parent().prepend($("<%= j render @comment %>"));
 <% end %>
+form.remove();
+$('#<%= dom_id(@comment) %>').hide().fadeIn('slow');

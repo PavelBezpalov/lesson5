@@ -1,2 +1,3 @@
 $('#add_child_comment').remove();
-$('#<%= dom_id(@parent_comment) %>').after('<div id="add_child_comment"><%= j render('form') %></div>');
+$('#<%= dom_id(@parent_comment) %>').parent().append('<div class="padding" id="add_child_comment"><%= j render('form') %></div>');
+$(window).scrollTop($("#add_child_comment").offset().top);

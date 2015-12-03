@@ -51,9 +51,11 @@ class CommentsController < ApplicationController
   private
 
   def check_modify_permissions
-    unless @comment.user == current_user
-      flash[:alert] = 'Permission denied.'
-      render js: "window.location = '#{new_session_path}'"
+    unless @comment.user == current_user || @comment.rule_5_minutes?
+      respond_to do |format|
+        flash[:alert] = 'Permission denied.'
+        format.js { render js: "window.location = '#{new_session_path}'" }
+      end
     end
   end
 

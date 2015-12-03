@@ -8,5 +8,14 @@ class Comment < ActiveRecord::Base
 
   after_create { post.touch }
 
-  default_scope { order('created_at DESC') }
+  scope :desc, -> { order('created_at DESC') }
+  scope :asc, -> { order('created_at ASC') }
+
+  def rule_5_minutes?
+    (self.created_at + 5.minutes) > Time.new
+  end
+
+  def timeleft
+    ((self.created_at + 5.minutes) - Time.new).to_i
+  end
 end

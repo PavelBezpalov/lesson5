@@ -2,36 +2,45 @@
   padding-left: 45px;
 }
 
+#comments, #add_comment, #comment-title {
+  padding-left: 25px;
+}
+
 #comments, #add_comment, #add_child_comment {
   padding-right: 25px;
 
-  header {
+  textarea {
+    height: 80px;
+  }
+}
+
+#comments {
+  .container {
+
+    header {
       font: italic normal 11px 'Source Sans Pro', sans-serif;
       display: inherit;
       line-height: 1.25;
       text-transform: uppercase;
       letter-spacing: 1px;
-  }
+    }
 
-  textarea {
-    height: 80px;
-  }
+    footer {
+      .comment-buttons {
+        display: flex;
 
-  footer {
-    .comment-buttons {
-      display: flex;
+        form {
+          margin-bottom: 0;
 
-      form {
-        margin-bottom: 0;
-
-        input[type=submit] {
-          @include button($primary-color, $size: 0.7);
+          input[type=submit] {
+            @include button($primary-color, $size: 0.7);
+          }
         }
-      }
 
-      .button_to:nth-child(2) {
-        margin-left: 5px;
-        margin-right: 5px;
+        .button_to:nth-child(2) {
+          margin-left: 5px;
+          margin-right: 5px;
+        }
       }
     }
   }

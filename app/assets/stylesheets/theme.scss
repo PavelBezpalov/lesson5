@@ -1,100 +1,109 @@
+// colors
+$active: #E424F0;
+$passive: #5A6DD0;
+$controls: #262626;
+$input: #C70D0C;
+$placeholder: #6C89E5;
+$container: #1A1A1A;
+$background: #000000;
+
 .navbar {
-  background-color: #1A1A1A;
+  background-color: $container;
   nav ul li a:not([role=button]) {
-    color: #E424F0;
+    color: $active;
   }
   nav ul li a:not([role=button]):hover {
-    color: #E424F0;
+    color: $active;
     text-decoration: underline;
-    background-color: #262626;
-    border-color: #E424F0;
+    background-color: $controls;
+    border-color: $active;
   }
 
   nav ul li a:not([role=button]).active {
-    color: #5A6DD0;
-    background: #262626;
-    border-color: #5A6DD0;
+    color: $passive;
+    background: $controls;
+    border-color: $passive;
   }
 
   nav ul li {
-    color: #6C89E5;
+    color: $passive;
   }
 }
 
 form.search {
   input {
-    background-color: #262626;
-    border-color: #262626;
-    color: #C70D0C;
+    background-color: $controls;
+    border-color: $controls;
+    color: $input;
   }
   :focus {
     box-shadow: inset 0 0 0 2px #7E71D0;
   }
   input[type=submit] {
-    background-color: #262626;
-    border-color: #E424F0;
-    color: #E424F0;
+    background-color: $controls;
+    border-color: $active;
+    color: $active;
   }
 }
 
 ::-webkit-input-placeholder {
-  color: #6C89E5;
+  color: $placeholder;
 }
 
 :-moz-placeholder { /* Firefox 18- */
-  color: #6C89E5;
+  color: $placeholder;
 }
 
 ::-moz-placeholder { /* Firefox 19+ */
-  color: #6C89E5;
+  color: $placeholder;
 }
 
 :-ms-input-placeholder {
-  color: #6C89E5;
+  color: $placeholder;
 }
 
 body {
-  background-color: #000000;
-  color: #5A6DD0;
+  background-color: $background;
+  color: $passive;
 }
 
 a {
-  color: #E424F0;
+  color: $active;
   :hover {
     text-decoration: underline;
   }
 }
 
 .alert {
-  background-color: #262626;
-  border-color: red;
-  color: red;
+  background-color: $controls;
+  border-color: $input;
+  color: $input;
 }
 
 .logo, h1 {
-  color: #6C89E5;
+  color: $placeholder;
 }
 
 .container {
-  background-color: #1A1A1A;
-  border-color: #1A1A1A;
+  background-color: $container;
+  border-color: $container;
   .post-title a {
-    color: #5A6DD0;
+    color: $passive;
   }
   .post-datetime {
-    color: #C70D0C;
+    color: $input;
   }
 
   p {
-    color: #5A6DD0;
+    color: $passive;
   }
 }
 
 form {
   input[type] {
-    background-color: #262626;
-    border-color: #262626;
-    color: #C70D0C;
+    background-color: $controls;
+    border-color: $controls;
+    color: $input;
   }
 
   input[type]:focus, textarea:focus {
@@ -102,19 +111,19 @@ form {
   }
 
   input[type=submit] {
-    background-color: #262626;
-    border-color: #E424F0;
-    color: #E424F0;
+    background-color: $controls;
+    border-color: $active;
+    color: $active;
   }
 
   textarea {
-    background-color: #262626;
-    border-color: #262626;
-    color: #C70D0C;
+    background-color: $controls;
+    border-color: $controls;
+    color: $input;
   }
 
   label {
-    color: #5A6DD0;
+    color: $passive;
   }
 }
 
@@ -123,29 +132,34 @@ form {
 }
 
 .CodeMirror {
-  background-color: #262626;
+  background-color: $controls;
 }
 
 .CodeMirror-code {
-  color: #C70D0C;
+  color: $input;
 }
 
 #comments {
   header {
-    background-color: #1A1A1A;
-    color: #C70D0C;
+    background-color: $container;
+    color: $input;
   }
 
   main, footer {
-    background-color: #000000;
-    border-color: #1A1A1A;
+    background-color: $background;
+    border-color: $container;
+  }
+
+
+  footer .countdown {
+    color: $passive;
   }
 }
 
-#comments footer .comment-buttons form input[type=submit] {
-  background-color: #262626;
-  border-color: #E424F0;
-  color: #E424F0;
+#comments .container footer .comment-buttons form input[type=submit] {
+  background-color: $controls;
+  border-color: $active;
+  color: $active;
 }
 
 .post {
@@ -153,33 +167,33 @@ form {
     .post-labels {
       .tag {
         a {
-          color: #E424F0;
+          color: $active;
         }
-        color: #E424F0;
-        background-color: #1A1A1A;
-        border-color: #E424F0;
+        color: $active;
+        background-color: $container;
+        border-color: $active;
       }
 
       .active {
-        background-color: #1A1A1A;
-        color: #5A6DD0;
-        border-color: #5A6DD0;
+        background-color: $container;
+        color: $passive;
+        border-color: $passive;
       }
     }
 
     .post-likes {
       .like {
-        background-color: #E424F0;
+        background-color: $active;
       }
       .dislike {
-        background-color: #6C89E5;
+        background-color: $passive;
       }
 
       .post-rating {
-        color: #E424F0;
+        color: $active;
       }
       .negative {
-        color: #6C89E5;
+        color: $passive;
       }
     }
   }
@@ -187,10 +201,10 @@ form {
 
 table {
   tbody tr:nth-child(even), thead tr:nth-child(even) {
-    background-color: #1A1A1A;
+    background-color: $container;
   }
 
   tr:hover {
-    border-color: #E424F0;
+    border-color: $active;
   }
 }
