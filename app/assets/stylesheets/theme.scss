@@ -208,3 +208,12 @@ table {
     border-color: $active;
   }
 }
+
+blockquote {
+  background: $controls;
+  border-left: 3px solid $passive;
+}
+
+blockquote:before {
+  color: $passive;
+}
