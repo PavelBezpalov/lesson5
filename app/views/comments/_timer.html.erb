@@ -1,40 +1,11 @@
 <%= javascript_tag do %>
     $(document).ready( function() {
-    var Countdown<%= comment.id %> = new (function() {
-    var $countdown,
-    incrementTime = 70,
-    currentTime = <%= comment.timeleft %>00,
-    updateTimer = function() {
-    $countdown.html(formatTime(currentTime));
-    if (currentTime == 0) {
-    Countdown<%= comment.id %>.Timer.stop();
-    timerComplete();
-    return;
-    }
-    currentTime -= incrementTime / 10;
-    if (currentTime < 0) currentTime = 0;
-    },
-    timerComplete = function() {
-      $("#<%= dom_id(comment) %> footer .countdown").remove();
-      $("#<%= dom_id(comment) %> footer .comment-buttons").remove();
-    },
-    init = function() {
-    $countdown = $('#countdown_<%= comment.id %>');
-    Countdown<%= comment.id %>.Timer = $.timer(updateTimer, incrementTime, true);
-    };
-    $(init);
-    });
-
-    function pad(number, length) {
-    var str = '' + number;
-    while (str.length < length) {str = '0' + str;}
-    return str;
-    }
-    function formatTime(time) {
-    var min = parseInt(time / 6000),
-    sec = parseInt(time / 100) - (min * 60),
-    hundredths = pad(time - (sec * 100) - (min * 6000), 2);
-    return (min > 0 ? pad(min, 2) : "00") + ":" + pad(sec, 2) + ":" + hundredths;
-    }
+      var Countdown<%= comment.id %> = $.countdown(function() {
+        $('#countdown_<%= comment.id %>').html(this.getFormattedTime());
+        if (this.isFinished()) {
+          $("#<%= dom_id(comment) %> footer .countdown").remove();
+          $("#<%= dom_id(comment) %> footer .comment-buttons").remove();
+        }
+      }, <%= comment.timeleft %>);
     });
 <% end %>
