@@ -1,0 +1,9 @@
+= content_for :head_css do
+  - if %w(new edit).include?(action_name)
+    = stylesheet_link_tag 'simplemde.min', 'data-turbolinks-track' => true
+= content_for :head_js do
+  - if action_name == 'show'
+    = javascript_include_tag 'jquery.timer', 'data-turbolinks-track' => true
+  - if %w(new edit).include?(action_name)
+    = javascript_include_tag 'simplemde.min', 'data-turbolinks-track' => true
+= render template: 'layouts/application'

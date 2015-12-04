@@ -14,6 +14,4 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require kickstart_rails
-//= require simplemde.min
-//= require jquery.timer
 //= require_tree .
