@@ -1,3 +1,4 @@
+= content_for :title, 'Log In'
 .centralize
   %h1 Log In
   = form_tag sessions_path do
@@ -14,3 +15,6 @@
     .submit
       .center
         = submit_tag 'Log In'
+    .signup
+      %div or
+      %div= link_to "Sign Up", new_user_path

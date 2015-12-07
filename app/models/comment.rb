@@ -5,6 +5,7 @@ class Comment < ActiveRecord::Base
   belongs_to :post
 
   validates_presence_of :user, :post, :body
+  validates :body, length: { in: 4..300 }
 
   after_create { post.touch }
 

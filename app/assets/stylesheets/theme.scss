@@ -87,9 +87,6 @@ a {
 .container {
   background-color: $container;
   border-color: $container;
-  .post-title a {
-    color: $passive;
-  }
   .post-datetime {
     color: $input;
   }
@@ -206,6 +203,10 @@ table {
 
   tr:hover {
     border-color: $active;
+
+    td {
+      border-top-color: $active;
+    }
   }
 }
 
@@ -216,4 +217,9 @@ blockquote {
 
 blockquote:before {
   color: $passive;
+}
+
+.modal {
+  background-color: $background;
+  border: 1px solid $active;
 }

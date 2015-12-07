@@ -32,11 +32,11 @@ class ApplicationController < ActionController::Base
 
   def require_user
     respond_to do |format|
-      flash[:alert] = 'You must be logged in to access that action'
       format.html do
+        flash[:alert] = 'You must be logged in to access that action'
         redirect_to new_session_path
       end
-      format.js { render js: "window.location = '#{new_session_path}'" }
+      format.js { render partial: 'sessions/modal_new' }
     end
   end
 

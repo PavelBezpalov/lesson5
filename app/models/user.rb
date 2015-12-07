@@ -5,6 +5,8 @@ class User < ActiveRecord::Base
   has_and_belongs_to_many :starred_posts, class_name: 'Post', join_table: 'starred'
   has_secure_password
 
+  validates :name, presence: true,
+                   uniqueness: true
   validates :email, presence: true,
                     uniqueness: true,
                     email: true

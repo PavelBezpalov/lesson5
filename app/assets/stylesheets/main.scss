@@ -64,10 +64,22 @@ form.search {
   }
 }
 
+.signup {
+  margin-top: 10px;
+}
+
 table {
   @include table($blank: true, $zebra: true);
-  tr:hover {
-    border: 1px solid #47A5DF;
+
+  tr {
+    border: 1px solid transparent;
+
+    &:hover {
+      td {
+        border-top: 1px solid #47A5DF;
+      }
+      border-color: #47A5DF;
+    }
   }
 }
 
@@ -77,15 +89,21 @@ blockquote {
   margin: 1.5em 10px;
   padding: 0.5em 10px;
   quotes: "\201C""\201D""\2018""\2019";
+
+  &:before {
+    color: #ccc;
+    content: open-quote;
+    font-size: 4em;
+    line-height: 0.1em;
+    margin-right: 0.1em;
+    vertical-align: -0.4em;
+  }
+
+  p {
+    display: inline;
+  }
 }
-blockquote:before {
-  color: #ccc;
-  content: open-quote;
-  font-size: 4em;
-  line-height: 0.1em;
-  margin-right: 0.1em;
-  vertical-align: -0.4em;
-}
-blockquote p {
-  display: inline;
+
+.modal {
+  @include modal();
 }
