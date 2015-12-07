@@ -1,7 +1,8 @@
 = content_for :title, 'Log In'
 .centralize
   %h1 Log In
-  = form_tag sessions_path do
+  -ajax ||= false
+  = form_tag sessions_path, remote: ajax do
     %div{ class: "#{field_class(@session, :email)}" }
       .center
         = label_tag :email, 'Email Address'

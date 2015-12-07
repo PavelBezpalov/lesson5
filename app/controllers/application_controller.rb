@@ -36,7 +36,7 @@ class ApplicationController < ActionController::Base
         flash[:alert] = 'You must be logged in to access that action'
         redirect_to new_session_path
       end
-      format.js { render partial: 'sessions/modal_new' }
+      format.js { render template: 'sessions/modal_new' }
     end
   end
 

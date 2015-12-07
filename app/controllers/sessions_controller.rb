@@ -6,11 +6,21 @@ class SessionsController < ApplicationController
     @session = Session.new(params)
     if @session.valid?
       session[:user_id] = @session.user.id
-      flash[:success] = 'You successfully logging in'
-      redirect_to posts_path
+      respond_to do |format|
+        format.html do
+          flash[:success] = 'You successfully logging in'
+          redirect_to posts_path
+        end
+        format.js { render action: 'success_login' }
+      end
     else
-      flash.now[:alert] = 'Something went wrong. Check errors and try again'
-      render action: 'new'
+      respond_to do |format|
+        format.html do
+          flash.now[:alert] = 'Something went wrong. Check errors and try again'
+          render action: 'new'
+        end
+        format.js { render action: 'failed_login' }
+      end
     end
   end
 

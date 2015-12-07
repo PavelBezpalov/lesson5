@@ -1,0 +1,4 @@
+$('.modal').remove();
+$('body').append('<div class="modal"><%= j render template: 'sessions/new', locals: { ajax: true } %></div>');
+var login = k$.modal('.modal');
+$(login).show();
